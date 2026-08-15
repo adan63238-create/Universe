@@ -1,510 +1,960 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0,
-        maximum-scale=1.0, user-scalable=no"
-    >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
 
-    <meta
-        name="theme-color"
-        content="#020306"
-    >
+  <meta
+    name="theme-color"
+    content="#030405"
+  >
 
-    <meta
-        name="description"
-        content="A cinematic journey through galaxies,
-        stellar systems and worlds beyond Earth."
-    >
+  <meta
+    name="description"
+    content="VOID — a cinematic exploration of space, galaxies and worlds beyond."
+  >
 
-    <title>VOID — Explore the Universe</title>
+  <meta
+    name="color-scheme"
+    content="dark"
+  >
 
-    <!-- ==================================================
-         FONTS
-         ================================================== -->
+  <title>VOID — Beyond What We Know</title>
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- ==================================================
-         STYLES
-         ================================================== -->
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 </head>
 
+<body class="is-locked">
 
-<body>
+  <!-- =====================================================
+       LOADER
+       ===================================================== -->
 
-    <!-- ==================================================
-         APPLICATION
-         ================================================== -->
+  <div
+    class="loader"
+    id="loader"
+    aria-label="Loading VOID"
+  >
+    <div class="loader-inner">
 
-    <main id="app">
+      <div class="loader-top">
+        <span>VOID</span>
+        <span id="loaderPercent">INITIALIZING</span>
+      </div>
 
-        <!-- ==============================================
-             CINEMATIC SPACE CANVAS
-             ============================================== -->
+      <div class="loader-bar">
+        <div
+          class="loader-progress"
+          id="loaderProgress"
+        ></div>
+      </div>
 
-        <canvas
-            id="spaceCanvas"
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       BACKGROUND
+       ===================================================== -->
+
+  <canvas
+    id="spaceCanvas"
+    class="space-canvas"
+    aria-hidden="true"
+  ></canvas>
+
+  <div
+    class="space-glow"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="vignette"
+    id="vignette"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="noise"
+    id="filmGrain"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="void-header">
+
+    <nav
+      class="nav void-nav"
+      aria-label="Main navigation"
+    >
+
+      <a
+        class="brand void-brand"
+        href="#home"
+        aria-label="VOID home"
+      >
+        <span
+          class="brand-mark"
+          aria-hidden="true"
+        ></span>
+
+        <span>VOID</span>
+      </a>
+
+
+      <div class="nav-links">
+
+        <a
+          class="nav-link is-active"
+          href="#home"
+        >
+          Home
+        </a>
+
+        <a
+          class="nav-link"
+          href="#explore"
+        >
+          Explore
+        </a>
+
+        <a
+          class="nav-link"
+          href="#galaxies"
+        >
+          Galaxies
+        </a>
+
+        <a
+          class="nav-link"
+          href="#worlds"
+        >
+          Worlds
+        </a>
+
+        <a
+          class="nav-link"
+          href="#about"
+        >
+          About
+        </a>
+
+      </div>
+
+
+      <div class="nav-actions">
+
+        <button
+          class="icon-button search-button"
+          type="button"
+          data-search
+          aria-label="Open search"
+        >
+          <span aria-hidden="true">⌕</span>
+        </button>
+
+        <button
+          class="menu-button"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+        </button>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================================
+       SEARCH OVERLAY
+       ===================================================== -->
+
+  <div
+    class="search-overlay"
+    aria-hidden="true"
+  >
+
+    <button
+      class="icon-button close-overlay"
+      type="button"
+      data-close-search
+      aria-label="Close search"
+    >
+      ×
+    </button>
+
+    <div class="search-panel">
+
+      <div class="eyebrow">
+        Search the void
+      </div>
+
+      <input
+        class="search-input"
+        type="search"
+        placeholder="Search..."
+        autocomplete="off"
+        aria-label="Search"
+      >
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
+  <main id="app">
+
+
+    <!-- ===================================================
+         HERO
+         =================================================== -->
+
+    <section
+      class="section hero"
+      id="home"
+      data-section-id="home"
+    >
+
+      <div
+        class="hero-content"
+        data-depth="4"
+      >
+
+        <div class="eyebrow">
+          An exploration beyond the known
+        </div>
+
+        <h1 class="hero-title">
+
+          <span class="line">
+            <span class="word">ENTER</span>
+          </span>
+
+          <span class="line">
+            <span class="word">THE VOID</span>
+          </span>
+
+        </h1>
+
+        <p class="hero-subtitle">
+          Space is not empty.
+          It is a landscape of light, gravity,
+          time and worlds waiting to be discovered.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="btn btn-primary"
+            href="#explore"
+            data-magnetic="0.12"
+          >
+            Begin exploration
+            <span class="btn-arrow">→</span>
+          </a>
+
+          <a
+            class="btn"
+            href="#galaxies"
+            data-magnetic="0.12"
+          >
+            Discover galaxies
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="scroll-cue"
+        aria-hidden="true"
+      >
+        <span>Scroll to explore</span>
+        <span class="scroll-line"></span>
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         EXPLORE
+         =================================================== -->
+
+    <section
+      class="section"
+      id="explore"
+      data-section-id="explore"
+    >
+
+      <div class="container section-inner">
+
+        <div class="section-header reveal">
+
+          <div class="section-kicker">
+            01 / Exploration
+          </div>
+
+          <h2 class="section-title">
+            A universe<br>
+            without edges.
+          </h2>
+
+          <p class="section-description">
+            From the smallest worlds orbiting distant stars
+            to structures spanning millions of light-years,
+            the universe is larger than our imagination.
+          </p>
+
+        </div>
+
+
+        <div class="card-grid">
+
+          <article
+            class="cinematic-card reveal"
+            data-tilt="4"
+          >
+
+            <div
+              class="card-media"
+              style="
+                background:
+                  radial-gradient(
+                    circle at 50% 40%,
+                    rgba(180,190,210,.25),
+                    transparent 8%
+                  ),
+                  radial-gradient(
+                    circle at 50% 50%,
+                    #242a32 0,
+                    #080a0d 38%,
+                    #020304 72%
+                  );
+              "
+            ></div>
+
+            <div class="card-content">
+
+              <div class="card-index">
+                01 / DEEP SPACE
+              </div>
+
+              <h3 class="card-title">
+                The<br>Unknown
+              </h3>
+
+              <p class="card-meta">
+                Beyond observation
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="cinematic-card reveal"
+            data-tilt="4"
+          >
+
+            <div
+              class="card-media"
+              style="
+                background:
+                  radial-gradient(
+                    ellipse at 50% 52%,
+                    rgba(215,205,185,.28),
+                    transparent 10%
+                  ),
+                  radial-gradient(
+                    ellipse at 45% 50%,
+                    #4a4339 0,
+                    #14110e 42%,
+                    #030303 74%
+                  );
+              "
+            ></div>
+
+            <div class="card-content">
+
+              <div class="card-index">
+                02 / STELLAR
+              </div>
+
+              <h3 class="card-title">
+                Light<br>Years
+              </h3>
+
+              <p class="card-meta">
+                Distance becomes time
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="cinematic-card reveal"
+            data-tilt="4"
+          >
+
+            <div
+              class="card-media"
+              style="
+                background:
+                  radial-gradient(
+                    circle at 54% 45%,
+                    rgba(160,175,190,.36),
+                    transparent 7%
+                  ),
+                  radial-gradient(
+                    circle at 54% 45%,
+                    #39424c 0,
+                    #11151a 38%,
+                    #020304 72%
+                  );
+              "
+            ></div>
+
+            <div class="card-content">
+
+              <div class="card-index">
+                03 / GRAVITY
+              </div>
+
+              <h3 class="card-title">
+                Worlds<br>Within
+              </h3>
+
+              <p class="card-meta">
+                Gravity shapes everything
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         GALAXIES
+         =================================================== -->
+
+    <section
+      class="section"
+      id="galaxies"
+      data-section-id="galaxies"
+      data-horizontal-section
+    >
+
+      <div class="container section-inner">
+
+        <div class="section-header reveal">
+
+          <div class="section-kicker">
+            02 / Galaxies
+          </div>
+
+          <h2 class="section-title">
+            Islands of<br>
+            impossible scale.
+          </h2>
+
+          <p class="section-description">
+            Billions of stars held together by gravity.
+            Each galaxy is a living structure moving through
+            a universe that never stops expanding.
+          </p>
+
+        </div>
+
+
+        <div class="horizontal-track" data-horizontal-track>
+
+          <article class="horizontal-card reveal">
+
+            <div
+              style="
+                position:absolute;
+                inset:0;
+                background:
+                  radial-gradient(
+                    ellipse at 48% 50%,
+                    rgba(210,220,235,.5) 0,
+                    rgba(150,165,185,.17) 13%,
+                    transparent 34%
+                  ),
+                  radial-gradient(
+                    ellipse at 50% 50%,
+                    #252b33 0,
+                    #080a0d 45%,
+                    #020304 78%
+                  );
+              "
+            ></div>
+
+            <div class="horizontal-card-info">
+
+              <div class="card-index">
+                MESSIER 31
+              </div>
+
+              <h3 class="card-title">
+                Andromeda
+              </h3>
+
+            </div>
+
+          </article>
+
+
+          <article class="horizontal-card reveal">
+
+            <div
+              style="
+                position:absolute;
+                inset:0;
+                background:
+                  radial-gradient(
+                    ellipse at 53% 50%,
+                    rgba(210,190,160,.5) 0,
+                    rgba(165,140,110,.16) 13%,
+                    transparent 34%
+                  ),
+                  radial-gradient(
+                    ellipse at 50% 50%,
+                    #332d27 0,
+                    #0b0908 45%,
+                    #020304 78%
+                  );
+              "
+            ></div>
+
+            <div class="horizontal-card-info">
+
+              <div class="card-index">
+                MESSIER 51
+              </div>
+
+              <h3 class="card-title">
+                Whirlpool
+              </h3>
+
+            </div>
+
+          </article>
+
+
+          <article class="horizontal-card reveal">
+
+            <div
+              style="
+                position:absolute;
+                inset:0;
+                background:
+                  radial-gradient(
+                    ellipse at 50% 50%,
+                    rgba(190,200,210,.4) 0,
+                    rgba(135,145,155,.14) 14%,
+                    transparent 33%
+                  ),
+                  radial-gradient(
+                    ellipse at 50% 50%,
+                    #20262c 0,
+                    #07090b 46%,
+                    #020304 80%
+                  );
+              "
+            ></div>
+
+            <div class="horizontal-card-info">
+
+              <div class="card-index">
+                MESSIER 87
+              </div>
+
+              <h3 class="card-title">
+                Virgo A
+              </h3>
+
+            </div>
+
+          </article>
+
+
+          <article class="horizontal-card reveal">
+
+            <div
+              style="
+                position:absolute;
+                inset:0;
+                background:
+                  radial-gradient(
+                    ellipse at 52% 48%,
+                    rgba(210,210,220,.34),
+                    transparent 15%
+                  ),
+                  radial-gradient(
+                    ellipse at 50% 50%,
+                    #24272c 0,
+                    #08090b 48%,
+                    #020304 80%
+                  );
+              "
+            ></div>
+
+            <div class="horizontal-card-info">
+
+              <div class="card-index">
+                DEEP FIELD
+              </div>
+
+              <h3 class="card-title">
+                Uncharted
+              </h3>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         WORLDS
+         =================================================== -->
+
+    <section
+      class="section"
+      id="worlds"
+      data-section-id="worlds"
+    >
+
+      <div class="container section-inner">
+
+        <div class="section-header reveal">
+
+          <div class="section-kicker">
+            03 / Worlds
+          </div>
+
+          <h2 class="section-title">
+            One star.<br>
+            Many stories.
+          </h2>
+
+          <p class="section-description">
+            Planetary systems are shaped by collision,
+            chemistry, gravity and time.
+            Every orbit is part of a much larger story.
+          </p>
+
+        </div>
+
+
+        <div class="object-stage">
+
+          <div
+            class="object-halo"
+            data-depth="12"
             aria-hidden="true"
-        ></canvas>
+          ></div>
+
+          <div
+            class="object"
+            data-depth="7"
+            aria-label="A cinematic abstract planet"
+          ></div>
+
+          <div class="object-caption reveal">
+
+            <div class="section-kicker">
+              World 001
+            </div>
+
+            <h3 class="object-caption-title">
+              Earth
+            </h3>
+
+            <p class="object-caption-copy">
+              A small world suspended in an enormous
+              darkness — familiar, fragile and extraordinary.
+            </p>
+
+          </div>
+
+        </div>
 
 
-        <!-- ==============================================
-             FILM GRAIN / ATMOSPHERE
-             ============================================== -->
+        <div class="data-grid reveal">
+
+          <div class="data-item">
+
+            <div class="data-label">
+              Diameter
+            </div>
+
+            <div class="data-value">
+              12,742 km
+            </div>
+
+          </div>
+
+
+          <div class="data-item">
+
+            <div class="data-label">
+              Distance from Sun
+            </div>
+
+            <div class="data-value">
+              149.6M km
+            </div>
+
+          </div>
+
+
+          <div class="data-item">
+
+            <div class="data-label">
+              Orbital period
+            </div>
+
+            <div class="data-value">
+              365.25 days
+            </div>
+
+          </div>
+
+
+          <div class="data-item">
+
+            <div class="data-label">
+              Moons
+            </div>
+
+            <div class="data-value">
+              1
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         ABOUT
+         =================================================== -->
+
+    <section
+      class="section"
+      id="about"
+      data-section-id="about"
+    >
+
+      <div class="container section-inner">
 
         <div
-            class="film-grain"
-            aria-hidden="true"
-        ></div>
-
-
-        <div
-            class="vignette"
-            aria-hidden="true"
-        ></div>
-
-
-        <!-- ==============================================
-             NAVIGATION
-             ============================================== -->
-
-        <header class="site-nav">
-
-            <button
-                class="brand"
-                id="brandButton"
-                aria-label="Return to beginning"
-            >
-                <span class="brand-mark">
-                    ◌
-                </span>
-
-                <span class="brand-name">
-                    VOID
-                </span>
-            </button>
-
-
-            <div class="nav-status">
-
-                <span
-                    class="status-dot"
-                    aria-hidden="true"
-                ></span>
-
-                <span>
-                    DEEP SPACE
-                </span>
-
-            </div>
-
-
-            <button
-                class="menu-button"
-                id="menuButton"
-                aria-label="Open navigation"
-                aria-expanded="false"
-            >
-
-                <span></span>
-                <span></span>
-
-            </button>
-
-        </header>
-
-
-        <!-- ==============================================
-             LANDING SCENE
-             ============================================== -->
-
-        <section
-            id="landing"
-            class="scene scene-landing active"
+          class="section-header reveal"
+          style="margin-top:auto; margin-bottom:auto;"
         >
 
-            <div class="scene-content">
+          <div class="section-kicker">
+            04 / About VOID
+          </div>
 
-                <p class="overline">
-                    A JOURNEY BEYOND
-                </p>
+          <h2 class="section-title">
+            Look closer.<br>
+            Think bigger.
+          </h2>
 
+          <p class="section-description">
+            VOID is an experimental cinematic interface
+            built around one idea: make the scale of space
+            feel personal.
+          </p>
 
-                <h1 class="hero-title">
+          <div
+            class="hero-actions"
+            style="justify-content:flex-start;"
+          >
 
-                    <span>THE</span>
-
-                    <span>
-                        <em>UNIVERSE</em>
-                    </span>
-
-                </h1>
-
-
-                <p class="hero-description">
-
-                    Explore galaxies, stellar systems
-                    and worlds scattered across the
-                    cosmic ocean.
-
-                </p>
-
-
-                <button
-                    class="explore-button"
-                    id="exploreButton"
-                >
-
-                    <span>
-                        EXPLORE
-                    </span>
-
-                    <span class="button-arrow">
-                        ↗
-                    </span>
-
-                </button>
-
-            </div>
-
-
-            <!-- ==========================================
-                 EARTH HERO
-                 ========================================== -->
-
-            <div
-                class="earth-hero"
-                id="earthHero"
-                aria-hidden="true"
+            <a
+              class="btn btn-primary"
+              href="#home"
+              data-magnetic="0.12"
             >
+              Return to beginning
+              <span class="btn-arrow">↑</span>
+            </a>
 
-                <div class="earth-glow"></div>
+          </div>
 
-                <div class="earth-image"></div>
+        </div>
 
-                <div class="earth-atmosphere"></div>
+      </div>
 
-            </div>
+    </section>
 
-
-            <!-- ==========================================
-                 SCROLL INDICATOR
-                 ========================================== -->
-
-            <div class="scroll-indicator">
-
-                <span>
-                    SCROLL TO EXPLORE
-                </span>
-
-                <div class="scroll-line"></div>
-
-            </div>
-
-        </section>
+  </main>
 
 
-        <!-- ==============================================
-             GALAXY SCENE
-             ============================================== -->
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
 
-        <section
-            id="galaxies"
-            class="scene scene-galaxies"
+  <footer class="footer">
+
+    <div style="width:100%;">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          VOID
+        </div>
+
+
+        <div>
+
+          <div class="footer-column-title">
+            Explore
+          </div>
+
+          <a
+            class="footer-link"
+            href="#explore"
+          >
+            The Unknown
+          </a>
+
+          <a
+            class="footer-link"
+            href="#galaxies"
+          >
+            Galaxies
+          </a>
+
+          <a
+            class="footer-link"
+            href="#worlds"
+          >
+            Worlds
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-column-title">
+            Navigate
+          </div>
+
+          <a
+            class="footer-link"
+            href="#home"
+          >
+            Home
+          </a>
+
+          <a
+            class="footer-link"
+            href="#about"
+          >
+            About
+          </a>
+
+          <button
+            class="footer-link"
+            type="button"
+            data-search
+            style="
+              border:0;
+              padding:0;
+              background:none;
+              text-align:left;
+            "
+          >
+            Search
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 VOID
+        </span>
+
+        <span>
+          Beyond what we know
+        </span>
+
+        <button
+          type="button"
+          data-top
+          style="
+            border:0;
+            background:none;
+            color:inherit;
+            cursor:pointer;
+            font-size:inherit;
+            letter-spacing:inherit;
+            text-transform:inherit;
+          "
         >
+          Back to top ↑
+        </button>
 
-            <div class="scene-heading">
+      </div>
 
-                <p class="overline">
-                    SECTOR 01
-                </p>
+    </div>
 
-                <h2>
-                    GALAXIES
-                </h2>
+  </footer>
 
-                <p>
-                    Billions of stars.
-                    Countless worlds.
-                    One observable universe.
-                </p>
 
-            </div>
+  <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
 
-
-            <div
-                class="galaxy-field"
-                id="galaxyField"
-            >
-                <!-- JS will create galaxies here -->
-            </div>
-
-
-            <div class="scene-hint">
-                DRAG TO EXPLORE
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             GALAXY DETAIL
-             ============================================== -->
-
-        <section
-            id="galaxyDetail"
-            class="scene scene-galaxy-detail"
-        >
-
-            <button
-                class="back-button"
-                data-back
-            >
-                ←
-            </button>
-
-
-            <div class="galaxy-detail-content">
-
-                <p
-                    class="overline"
-                    id="galaxyType"
-                >
-                    SPIRAL GALAXY
-                </p>
-
-
-                <h2 id="galaxyName">
-                    MILKY WAY
-                </h2>
-
-
-                <p id="galaxyDescription">
-                    Our home galaxy.
-                </p>
-
-
-                <div
-                    class="galaxy-visual"
-                    id="galaxyVisual"
-                ></div>
-
-
-                <button
-                    class="primary-action"
-                    id="enterGalaxyButton"
-                >
-
-                    ENTER GALAXY
-
-                    <span>↗</span>
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             SOLAR SYSTEM
-             ============================================== -->
-
-        <section
-            id="solarSystem"
-            class="scene scene-solar-system"
-        >
-
-            <button
-                class="back-button"
-                data-back
-            >
-                ←
-            </button>
-
-
-            <div class="solar-heading">
-
-                <p class="overline">
-                    MILKY WAY · ORION ARM
-                </p>
-
-                <h2>
-                    SOLAR SYSTEM
-                </h2>
-
-            </div>
-
-
-            <div
-                class="solar-stage"
-                id="solarStage"
-            >
-
-                <div
-                    class="sun"
-                    id="sun"
-                ></div>
-
-                <!-- JS creates orbital system -->
-
-            </div>
-
-
-            <div class="system-controls">
-
-                <button
-                    id="pauseSystem"
-                    aria-label="Pause solar system"
-                >
-                    II
-                </button>
-
-                <span>
-                    LIVE
-                </span>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             PLANET DETAIL
-             ============================================== -->
-
-        <section
-            id="planetDetail"
-            class="scene scene-planet"
-        >
-
-            <button
-                class="back-button"
-                data-back
-            >
-                ←
-            </button>
-
-
-            <div
-                class="planet-camera"
-                id="planetCamera"
-            >
-
-                <div
-                    class="planet-render"
-                    id="planetRender"
-                ></div>
-
-            </div>
-
-
-            <div class="planet-information">
-
-                <p
-                    class="overline"
-                    id="planetType"
-                >
-                    TERRESTRIAL PLANET
-                </p>
-
-
-                <h2 id="planetName">
-                    EARTH
-                </h2>
-
-
-                <p id="planetDescription">
-                    Our home world.
-                </p>
-
-
-                <div
-                    class="planet-facts"
-                    id="planetFacts"
-                >
-                    <!-- JS -->
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==============================================
-             GLOBAL TRANSITION
-             ============================================== -->
-
-        <div
-            class="transition"
-            id="transition"
-            aria-hidden="true"
-        ></div>
-
-
-        <!-- ==============================================
-             MENU
-             ============================================== -->
-
-        <aside
-            class="menu-panel"
-            id="menuPanel"
-            aria-hidden="true"
-        >
-
-            <button
-                class="menu-close"
-                id="menuClose"
-            >
-                ×
-            </button>
-
-
-            <nav>
-
-                <button data-target="landing">
-                    HOME
-                </button>
-
-                <button data-target="galaxies">
-                    GALAXIES
-                </button>
-
-                <button data-target="solarSystem">
-                    SOLAR SYSTEM
-                </button>
-
-            </nav>
-
-        </aside>
-
-    </main>
-
-
-    <!-- ==================================================
-         JAVASCRIPT
-         ================================================== -->
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
