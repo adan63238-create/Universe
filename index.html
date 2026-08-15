@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0,
+        maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta
+        name="theme-color"
+        content="#020306"
+    >
+
+    <meta
+        name="description"
+        content="A cinematic journey through galaxies,
+        stellar systems and worlds beyond Earth."
+    >
+
+    <title>VOID — Explore the Universe</title>
+
+    <!-- ==================================================
+         FONTS
+         ================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ==================================================
+         STYLES
+         ================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         APPLICATION
+         ================================================== -->
+
+    <main id="app">
+
+        <!-- ==============================================
+             CINEMATIC SPACE CANVAS
+             ============================================== -->
+
+        <canvas
+            id="spaceCanvas"
+            aria-hidden="true"
+        ></canvas>
+
+
+        <!-- ==============================================
+             FILM GRAIN / ATMOSPHERE
+             ============================================== -->
+
+        <div
+            class="film-grain"
+            aria-hidden="true"
+        ></div>
+
+
+        <div
+            class="vignette"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- ==============================================
+             NAVIGATION
+             ============================================== -->
+
+        <header class="site-nav">
+
+            <button
+                class="brand"
+                id="brandButton"
+                aria-label="Return to beginning"
+            >
+                <span class="brand-mark">
+                    ◌
+                </span>
+
+                <span class="brand-name">
+                    VOID
+                </span>
+            </button>
+
+
+            <div class="nav-status">
+
+                <span
+                    class="status-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span>
+                    DEEP SPACE
+                </span>
+
+            </div>
+
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open navigation"
+                aria-expanded="false"
+            >
+
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </header>
+
+
+        <!-- ==============================================
+             LANDING SCENE
+             ============================================== -->
+
+        <section
+            id="landing"
+            class="scene scene-landing active"
+        >
+
+            <div class="scene-content">
+
+                <p class="overline">
+                    A JOURNEY BEYOND
+                </p>
+
+
+                <h1 class="hero-title">
+
+                    <span>THE</span>
+
+                    <span>
+                        <em>UNIVERSE</em>
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Explore galaxies, stellar systems
+                    and worlds scattered across the
+                    cosmic ocean.
+
+                </p>
+
+
+                <button
+                    class="explore-button"
+                    id="exploreButton"
+                >
+
+                    <span>
+                        EXPLORE
+                    </span>
+
+                    <span class="button-arrow">
+                        ↗
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- ==========================================
+                 EARTH HERO
+                 ========================================== -->
+
+            <div
+                class="earth-hero"
+                id="earthHero"
+                aria-hidden="true"
+            >
+
+                <div class="earth-glow"></div>
+
+                <div class="earth-image"></div>
+
+                <div class="earth-atmosphere"></div>
+
+            </div>
+
+
+            <!-- ==========================================
+                 SCROLL INDICATOR
+                 ========================================== -->
+
+            <div class="scroll-indicator">
+
+                <span>
+                    SCROLL TO EXPLORE
+                </span>
+
+                <div class="scroll-line"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             GALAXY SCENE
+             ============================================== -->
+
+        <section
+            id="galaxies"
+            class="scene scene-galaxies"
+        >
+
+            <div class="scene-heading">
+
+                <p class="overline">
+                    SECTOR 01
+                </p>
+
+                <h2>
+                    GALAXIES
+                </h2>
+
+                <p>
+                    Billions of stars.
+                    Countless worlds.
+                    One observable universe.
+                </p>
+
+            </div>
+
+
+            <div
+                class="galaxy-field"
+                id="galaxyField"
+            >
+                <!-- JS will create galaxies here -->
+            </div>
+
+
+            <div class="scene-hint">
+                DRAG TO EXPLORE
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             GALAXY DETAIL
+             ============================================== -->
+
+        <section
+            id="galaxyDetail"
+            class="scene scene-galaxy-detail"
+        >
+
+            <button
+                class="back-button"
+                data-back
+            >
+                ←
+            </button>
+
+
+            <div class="galaxy-detail-content">
+
+                <p
+                    class="overline"
+                    id="galaxyType"
+                >
+                    SPIRAL GALAXY
+                </p>
+
+
+                <h2 id="galaxyName">
+                    MILKY WAY
+                </h2>
+
+
+                <p id="galaxyDescription">
+                    Our home galaxy.
+                </p>
+
+
+                <div
+                    class="galaxy-visual"
+                    id="galaxyVisual"
+                ></div>
+
+
+                <button
+                    class="primary-action"
+                    id="enterGalaxyButton"
+                >
+
+                    ENTER GALAXY
+
+                    <span>↗</span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             SOLAR SYSTEM
+             ============================================== -->
+
+        <section
+            id="solarSystem"
+            class="scene scene-solar-system"
+        >
+
+            <button
+                class="back-button"
+                data-back
+            >
+                ←
+            </button>
+
+
+            <div class="solar-heading">
+
+                <p class="overline">
+                    MILKY WAY · ORION ARM
+                </p>
+
+                <h2>
+                    SOLAR SYSTEM
+                </h2>
+
+            </div>
+
+
+            <div
+                class="solar-stage"
+                id="solarStage"
+            >
+
+                <div
+                    class="sun"
+                    id="sun"
+                ></div>
+
+                <!-- JS creates orbital system -->
+
+            </div>
+
+
+            <div class="system-controls">
+
+                <button
+                    id="pauseSystem"
+                    aria-label="Pause solar system"
+                >
+                    II
+                </button>
+
+                <span>
+                    LIVE
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             PLANET DETAIL
+             ============================================== -->
+
+        <section
+            id="planetDetail"
+            class="scene scene-planet"
+        >
+
+            <button
+                class="back-button"
+                data-back
+            >
+                ←
+            </button>
+
+
+            <div
+                class="planet-camera"
+                id="planetCamera"
+            >
+
+                <div
+                    class="planet-render"
+                    id="planetRender"
+                ></div>
+
+            </div>
+
+
+            <div class="planet-information">
+
+                <p
+                    class="overline"
+                    id="planetType"
+                >
+                    TERRESTRIAL PLANET
+                </p>
+
+
+                <h2 id="planetName">
+                    EARTH
+                </h2>
+
+
+                <p id="planetDescription">
+                    Our home world.
+                </p>
+
+
+                <div
+                    class="planet-facts"
+                    id="planetFacts"
+                >
+                    <!-- JS -->
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================================
+             GLOBAL TRANSITION
+             ============================================== -->
+
+        <div
+            class="transition"
+            id="transition"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- ==============================================
+             MENU
+             ============================================== -->
+
+        <aside
+            class="menu-panel"
+            id="menuPanel"
+            aria-hidden="true"
+        >
+
+            <button
+                class="menu-close"
+                id="menuClose"
+            >
+                ×
+            </button>
+
+
+            <nav>
+
+                <button data-target="landing">
+                    HOME
+                </button>
+
+                <button data-target="galaxies">
+                    GALAXIES
+                </button>
+
+                <button data-target="solarSystem">
+                    SOLAR SYSTEM
+                </button>
+
+            </nav>
+
+        </aside>
+
+    </main>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
